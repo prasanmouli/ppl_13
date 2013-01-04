@@ -1,0 +1,224 @@
+body{
+	background: rgb(191,194,146);
+	border-radius:10px;
+	}
+a, a:visited{
+	font-size: 13px;
+	font-family: Trajan Pro;
+	text-decoration: none;
+	color: #17526d;
+	font-weight: bold;	
+	border-right: 1px solid #17526d;
+	padding: 0px;
+	padding-right: 3px;
+	}
+a:hover{
+	color: #974B07;
+	border-color: #974B07;
+	} 
+.user{
+	font-size: 12px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	}
+.user a{
+	border: none;
+	font-size: 12px;
+	}		
+.menu{
+	margin-top: 22px;
+	width:1100px;
+	height:50px;
+	}	
+.menu a{
+	font-size: 16px;
+	font-family: Trajan Pro;
+	text-decoration: none;
+	color: #974B07;
+	margin-right: 10px;
+	border: 1px solid rgb(191,194,146);
+	border-bottom: 2px solid #974B07;
+	border-radius: 10px;
+	font-weight: bold;	
+	padding: 15px;
+	padding-bottom: 10px;
+	}	
+.menu a:hover{
+	padding: 15px;
+	color: #004000;
+	border-color: #974B07;
+	margin-right: 10px;
+	border-radius: 5px;
+	background: rgb(145,151,108);
+	border: 1px solid rgb(191,194,146);
+	-webkit-box-shadow: inset 0 0 6px 0 black;
+	-moz-box-shadow: inset 0 0 6px 0 black;
+	box-shadow: inset 0 0 6px 0 black;
+	}		
+#header img{
+	border:1px solid black; 
+	border-radius:7px;
+	-webkit-box-shadow: 0 8px 8px -6px black;
+	-moz-box-shadow: 0 8px 8px -6px black;
+	box-shadow: 0 8px 8px -6px black;
+	}
+#content{
+	width:1000px;
+	height: 350px;
+	text-align: left;
+	font-family: Segoe UI, Tahoma;
+	font-size: 16px;
+	border: 1px solid #974B07;
+	border-radius: 5px;
+	background: rgb(169,175,137);
+	-webkit-box-shadow: inset 0 0 6px 0 black;
+	-moz-box-shadow: inset 0 0 6px 0 black;
+	box-shadow: inset 0 0 6px 0 black;
+	padding:30px;
+	}	
+#content a{
+	font-size: 15px;
+	border: none;
+	}	
+#f_icon:hover{
+	background: rgb(18,46,106);
+	}	
+#f_icon{
+	padding:1px;
+	border: 1px solid #974B07; 
+	border-radius: 45px
+	}	
+#money{
+	color: #974B07;
+	padding: 8px;
+	text-align: center;
+	font-weight: bold;
+	}	
+#money img{
+	border: 1px solid #974B07;
+	border-radius:5px;
+	float:left;
+	}	
+.current_page a, .current_page a:hover{
+	padding: 15px;
+	color: #004000;
+	border-color: #974B07;
+	margin-right: 10px;
+	border-radius: 5px;
+	background: rgb(145,151,108);
+	border: 1px solid rgb(191,194,146);
+	-webkit-box-shadow: inset 0 0 6px 0 black;
+	-moz-box-shadow: inset 0 0 6px 0 black;
+	box-shadow: inset 0 0 6px 0 black;
+	}	
+/* Login Modal */
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+.login-popup{
+	display:none;
+	background: rgb(169,175,137);
+	padding: 10px; 	
+	border: 2px solid black;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 5px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 5px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 5px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+.login-popup a {
+	border:none;
+	}
+/*Close button*/
+img.btn_close { 
+	float: right;
+	width: 18px; 
+	margin: 0;
+	border: none;
+}
+fieldset { 
+	border:none; 
+}
+form.signin .textbox label { 
+	display:block; 
+	padding-bottom:7px; 
+}
+form.signin .textbox span { 
+	display:block;
+}
+form.signin p, form.signin span { 
+	font-size: 14px;
+	font-family: Trajan Pro;
+	text-decoration: none;
+	font-weight: bold;
+	color: #17526d; 
+	line-height:18px;
+} 
+.signin input { 
+	background: rgb(216,216,216); 
+	border-bottom:1px solid #333;
+	border-left:1px solid #000;
+	border-right:1px solid #333;
+	border-top:1px solid #000;
+	color: black; 
+        border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+	font:13px Arial, Helvetica, sans-serif;
+	padding:6px 6px 4px;
+	width:200px;
+}
+.signin .button {  
+	font-weight: bold;
+	font-family: Segoe UI;
+	font-size: 15px;
+	border-width:1px;
+    border-radius:4px;
+	-webkit-box-shadow: 0 0 2px 0 black;
+	-moz-box-shadow: 0 0 2px 0 black;
+	box-shadow: 0 0 2px 0 black;
+	color:#333;
+	cursor:pointer;
+	display:inline-block;
+	padding:6px 6px 4px;
+	margin-top:10px;
+	font:12px; 
+	width:214px;
+	}
+.button:hover { 
+	background:rgb(145,151,108);
+	-webkit-box-shadow: 0 8px 8px -10px black;
+	-moz-box-shadow: 0 8px 8px -10px black;
+	box-shadow: 0 8px 8px -10px black;
+ 	}	
+.signin .title{
+	font-family: Segoe UI;
+	font-weight: bold;
+	font-size: 22px;
+	color: #17526d;
+	margin-bottom: 15px;
+	}
+.signin .title, .signin .forgot	{	
+	text-align: center;
+	}
+.signin a{
+	font-family: Segoe UI;
+	border:none;
+	font-size: 12px;
+	}
+.team_select button{
+	width: 120px;
+	height: 50px;
+	}
