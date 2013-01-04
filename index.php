@@ -73,7 +73,7 @@ $(document).ready(function() {
 	else 
 		echo "none"; 	
 	?>"> 
-    <td> <a href=""> Register </a> </td>
+    <td> <a href="http://www.pragyan.org/13/home/+login&subaction=register"> Register </a> </td>
 	<td> <a href="#login-box" class="login-window" id="opener"> Login </a> </td> </tr> 
 </table>
 </div>
