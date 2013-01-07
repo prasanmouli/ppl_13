@@ -9,65 +9,16 @@
 <title>PPL13</title>
 <link href="./css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script>
-/*Login Modal*/
-$(document).ready(function() {
-	$('a.login-window').click(function() {
-		
-        //Getting the variable's value from a link 
-		var loginBox = $(this).attr('href');
-
-		//Fade in the Popup
-		$(loginBox).fadeIn(300);
-		
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(loginBox).height() + 24) / 2; 
-		var popMargLeft = ($(loginBox).width() + 24) / 2; 
-		
-		$(loginBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-		
-		// Add the mask to body
-		$('body').append('<div id="mask"></div>');
-		$('#mask').fadeIn(300);
-		
-		return false;
-	});
-	
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .login-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-});
-</script>
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css" />
-<style>
-	#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-    #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
-</style>
-<script>
-   $(function() {
-      $( "#draggable" ).draggable();
-      $( "#droppable" ).droppable({
-          drop: function( event, ui ) {
-              $( this )
-                  .addClass( "ui-state-highlight" )
-                  .find( "p" )
-                      .html( "Dropped!" );
-          }
-      });
-  });
-</script>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <style>
+    #products { float:left; width: 500px; margin-right: 2em; }
+    #cart { width: 200px; float: left; margin-top: 1em; }
+    /* style the list to maximize the droppable hitarea */
+    #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+    </style>
 </head>
 
 <body>
@@ -115,13 +66,6 @@ $(document).ready(function() {
 		<tr> <td> <button> Coaches </button> </td> </tr>
 		</table>
 	</div>
-	<div id="box2" style="float:left; margin-left: 10px; width: 500px; height: 350px; border: 1px solid black">
-		<div id="draggable" class="ui-widget-content"> </div>
-	</div>
-
-	<div id="droppable" class="ui-widget-header" style="float:left; overflow: scroll; margin-left: 30px; width: 200px; height: 350px; border: 1px solid black">
-	</div>
-
 </div>
 
 <div align="center">
