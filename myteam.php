@@ -9,16 +9,68 @@
 <title>PPL13</title>
 <link href="./css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./js/main.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-    <style>
-    #products { float:left; width: 500px; margin-right: 2em; }
-    #cart { width: 200px; float: left; margin-top: 1em; }
-    /* style the list to maximize the droppable hitarea */
-    #cart ol { margin: 0; padding: 1em 0 1em 3em; }
-    </style>
+<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+var list = Array ('batsmen','bowlers','allrounders','coaches','keepers');
+function playerList(n){
+	if (n==0){
+		k = "pages/" + list[n] + ".php";
+		$.ajax({
+			url: k,
+			success: function(html) {$('#batsmen_list').append(html);} 
+		});
+		}
+	else if(n==1) {
+		playerList(n-1);
+		k = "pages/" + list[n] + ".php";
+		$.ajax({
+			url: k,
+			success: function(html) {
+				$('#bowler_list').append(html);
+				$('#bowler_list').hide();
+			} 
+		});
+		}
+		else if(n==2) {
+		playerList(n-1);
+		k = "pages/" + list[n] + ".php";
+		$.ajax({
+			url: k,
+			success: function(html) {
+				$('#allrounder_list').append(html);
+				$('#allrounder_list').hide();
+			} 
+		});
+		}
+		else if(n==3) {
+		playerList(n-1);
+		k = "pages/" + list[n] + ".php";
+		$.ajax({
+			url: k,
+			success: function(html) {
+				$('#coach_list').append(html);
+				$('#coach_list').hide();
+			} 
+		});
+		}
+		else {
+		playerList(n-1);
+		k = "pages/" + list[n] + ".php";
+		$.ajax({
+			url: k,
+			success: function(html) {
+				$('#keeper_list').append(html);
+				$('#keeper_list').hide();
+			} 
+		});
+		}
+}
+window.onload = playerList(4);
+</script>
+<script type="text/javascript">
+
+</script>
+<style></style>
 </head>
 
 <body>
@@ -56,21 +108,42 @@
 	</table>
 	</div>
 
-	<div id="content">
-	<div id="box1"  style="width: 160px; height:350px;float: left">
-		<table class="team_select" style="padding: 40px 20px 50px 10px;">
-		<tr> <td> <button> Batsmen </button> </td> </tr>
-		<tr> <td> <button> Bowlers </button> </td> </tr>
-		<tr> <td> <button> All-Rounders </button> </td> </tr>
-		<tr> <td> <button> Keepers </button> </td> </tr>
-		<tr> <td> <button> Coaches </button> </td> </tr>
+	<div id="content" style="height: 450px;">
+	<div id="box1"  style="width: 160px; height:450px;float: left">
+		<table class="team_select" style="padding: 80px 20px 50px 0px;">
+		<tr> <td> <button onclick="make_visible('batsmen_list')"> Batsmen </button> </td> </tr>
+		<tr> <td> <button onclick="make_visible('bowler_list')"> Bowlers </button> </td> </tr>
+		<tr> <td> <button onclick="make_visible('allrounder_list')"> All-Rounders </button> </td> </tr>
+		<tr> <td> <button onclick="make_visible('keeper_list')"> Keepers </button> </td> </tr>
+		<tr> <td> <button onclick="make_visible('coach_list')"> Coaches </button> </td> </tr>
 		</table>
 	</div>
+    
+    <div id="pool" style="width: 630px; float:left; overflow: auto; margin-right:20px; height: 450px;">
+    <div id="batsmen_list" align="center">
+	</div>
+	<div id="bowler_list" style="display: none; visibility: hidden;" align="center">
+	</div>
+    <div id="allrounder_list" style="display: none; visibility: hidden;" align="center">
+	</div>
+	<div id="coach_list" style="display: none; visibility: hidden;" align="center">
+	</div>
+    <div id="keeper_list" style="display: none; visibility: hidden;" align="center">
+	</div>
+	</div>
+    
+    <div style="width: 180px; overflow: auto; height: 400px;">
+    <div id="selection" style="overflow: auto; height: 360px;">
+    </div>
+    <div align="center"> <button id="confirmation" onclick="onConfirmation()" disabled="true"> Confirm List </button></div>
+    </div>
+
 </div>
 
 <div align="center">
-Pragyan CSG Team 2012-2013
+&copy; Pragyan CSG Team 2012-2013
+<div id="test" > </div>
 </div>
-</body>
 
+</body>
 </html>
