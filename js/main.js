@@ -74,6 +74,22 @@ function addToList(player_id, name){
 		});
 }
 
+function onConfirmation(){
+	var d=0;
+	if(numberList[0]<7)
+		d=1;
+	else if(numberList[1]<6)
+			d=1;
+		else if(numberList[2]<2)
+				d=1;
+			else if(numberList[2]<2)
+					d=1;
+				else 
+					d=1;	
+	if(d==1)
+		alert("osdmfksm!")									
+}
+
 function removeFromList(player_id){
 		$.ajax({
 			success: function() {
@@ -112,18 +128,3 @@ function removeFromList(player_id){
 		});
 }
 
-function onConfirmation(){
-	var d=0;
-	if(numberList[0]<7)
-		d=1;
-	else if(numberList[1]<6)
-			d=1;
-		else if(numberList[2]<2)
-				d=1;
-			else if(numberList[2]<2)
-					d=1;
-				else 
-					d=1;	
-	if(d==1)
-		alert("Podangoyya!")									
-}
