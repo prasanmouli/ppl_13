@@ -8,8 +8,8 @@ function hide(get) {
 }	
 
 		
-function make_visible(get) {
-	if (!document.getElementById) {
+function make_visible(get){
+	if (!document.getElementById){
 		return false;
 	}
 	
@@ -25,42 +25,40 @@ function make_visible(get) {
 	}	
 }
 
-probablePlayerList = Array ();
-var i=0;
-
-numberList = Array();
-for(j=0;j<5;j++)
-numberList[j]=0;
 function addToList(player_id, name){
 		var tml = "<div id="+player_id+">"+name+"<a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </div>";
 		$.ajax({
 			success: function() {
 			$('#selection').append(tml);
 			probablePlayerList[i++] = player_id;
+			
 			if(player_id[0]=='1'){ 
 				//batsmen
 				numberList[0]++;
+				console.log(numberList[0]);
 				}
 			else if(player_id[0]=='4'){
 				//bowlers
 				numberList[1]++;
+				console.log(numberList[1]);
 				}
 				else if(player_id[0]=='3'){
 				//allrounders
-				console.log(numberList[2]);
 				numberList[2]++;
+				console.log(numberList[2]);
 				}
 				else if(player_id[0]=='5'){
 				//coaches
-				console.log(numberList[3]);
 				numberList[3]++;
+				console.log(numberList[3]);
 				}
 				else {
 				//keepers
-				console.log(numberList[4]);
 				numberList[4]++;
+				console.log(numberList[4]);
 				}
-			if (probablePlayerList.length>=18){
+			
+			if (probablePlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
 				}
@@ -73,7 +71,7 @@ function addToList(player_id, name){
 			}
 		});
 }
-
+/*
 function onConfirmation(){
 	var d=0;
 	if(numberList[0]<7)
@@ -88,43 +86,69 @@ function onConfirmation(){
 					d=1;	
 	if(d==1)
 		alert("osdmfksm!")									
-}
+}*/
 
 function removeFromList(player_id){
 		$.ajax({
 			success: function() {
 			$('#'+player_id).remove();
-				document.getElementById('confirmation').disabled = true; 
+			
+			for(k=0; k<probablePlayerList.length; k++){
+				if(player_id==probablePlayerList[k]){	
+					probablePlayerList.splice(k,1);
+					i--;
+					break;
+					}
+				//console.log(probablePlayerList[j]);
 			}
-		});
-		if(player_id[0]=='1'){
+			
+			if(player_id[0]=='1'){ 
+				//batsmen
 				numberList[0]--;
+				console.log(numberList[0]);
 				}
 			else if(player_id[0]=='4'){
+				//bowlers
 				numberList[1]--;
+				console.log(numberList[1]);
 				}
 				else if(player_id[0]=='3'){
+				//allrounders
 				numberList[2]--;
+				console.log(numberList[2]);
 				}
 				else if(player_id[0]=='5'){
+				//coaches
 				numberList[3]--;
+				console.log(numberList[3]);
 				}
-				else 
+				else {
+				//keepers
 				numberList[4]--;
+				console.log(numberList[4]);
+				}
+			trial ();
+			if (probablePlayerList.length<18){
+				document.getElementById('confirmation').disabled = true; 
+				}
+			
+			}
+		});
 		
-
 		$.ajax({
 			success: function() {
 			$('.Added'+player_id).empty();
 			$('.'+player_id).append("+Add Player+");
-			for(j=0; j<probablePlayerList.length; j++){
-				if(player_id==probablePlayerList[j]){	
-					probablePlayerList.splice(j,1);
-					i--;
-					break;
-					}
-				}
 			}
 		});
 }
 
+function trial(){
+		console.log(numberList[0]);
+	}
+	
+probablePlayerList = Array ();
+var i=0;
+numberList = Array();
+for(j=0;j<5;j++)
+	numberList[j]=0;	
