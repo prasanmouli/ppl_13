@@ -12,7 +12,7 @@
 		</figure>
     </div>";
 			$src = "./images/players/batsmen/".$info[0].".jpg";
-			echo $txt1."<img src=".$src." id='Img".$info[0]."' alt=".$info[0]."/>".$txt2;
+			echo $txt1."<img src=".$src." alt=".$info[0]."/>".$txt2;
 			}
 
     echo "<section id='learninz'>

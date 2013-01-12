@@ -1,3 +1,12 @@
+
+var probablePlayerList = new Array ();
+var i=0;
+var numberList = new Array(5);
+for(j=0;j<5;j++){
+	numberList[j]=0;
+console.log(numberList[j]);
+}
+
 function hide(get) {
 	if (!document.getElementById) {
 	return false;
@@ -19,9 +28,9 @@ function make_visible(get){
 	divID.style.display = "block";
 	divID.style.visibility = "visible";
 	
-	for(i=0; i<5; i++){
-		if((list[i])!= ("#"+get))
-			$(list[i]).hide();
+	for(l=0; l<5; l++){
+		if((list[l])!= ("#"+get))
+			$(list[l]).hide();
 	}	
 }
 
@@ -34,6 +43,7 @@ function addToList(player_id, name){
 			
 			if(player_id[0]=='1'){ 
 				//batsmen
+				console.log(player_id[0]);
 				numberList[0]++;
 				console.log(numberList[0]);
 				}
@@ -57,7 +67,7 @@ function addToList(player_id, name){
 				numberList[4]++;
 				console.log(numberList[4]);
 				}
-			
+console.log(probablePlayerList.length);
 			if (probablePlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
@@ -71,23 +81,29 @@ function addToList(player_id, name){
 			}
 		});
 }
-/*
+
 function onConfirmation(){
 	var d=0;
 	if(numberList[0]<7)
-		d=1;
+	   d=1;
 	else if(numberList[1]<6)
 			d=1;
 		else if(numberList[2]<2)
 				d=1;
-			else if(numberList[2]<2)
+			else if(numberList[3]<2)
 					d=1;
-				else 
+				else if(numberList[4]<1) 
 					d=1;	
-	if(d==1)
-		alert("osdmfksm!")									
-}*/
 
+	if(d==1)
+	   alert("osdmfksm!")	
+	   else {
+		   alert("Success");
+		   }		
+		
+								
+}
+			
 function removeFromList(player_id){
 		$.ajax({
 			success: function() {
@@ -101,23 +117,24 @@ function removeFromList(player_id){
 					}
 				//console.log(probablePlayerList[j]);
 			}
-			
-			if(player_id[0]=='1'){ 
+			console.log();
+		   if(Math.floor(player_id/100)==1){ 
 				//batsmen
+				
 				numberList[0]--;
 				console.log(numberList[0]);
 				}
-			else if(player_id[0]=='4'){
+			else if(Math.floor(player_id/100)==4){
 				//bowlers
 				numberList[1]--;
 				console.log(numberList[1]);
 				}
-				else if(player_id[0]=='3'){
+				else if(Math.floor(player_id/100)==3){
 				//allrounders
 				numberList[2]--;
 				console.log(numberList[2]);
 				}
-				else if(player_id[0]=='5'){
+				else if(Math.floor(player_id/100)==5){
 				//coaches
 				numberList[3]--;
 				console.log(numberList[3]);
@@ -127,7 +144,7 @@ function removeFromList(player_id){
 				numberList[4]--;
 				console.log(numberList[4]);
 				}
-			trial ();
+			
 			if (probablePlayerList.length<18){
 				document.getElementById('confirmation').disabled = true; 
 				}
@@ -142,13 +159,3 @@ function removeFromList(player_id){
 			}
 		});
 }
-
-function trial(){
-		console.log(numberList[0]);
-	}
-	
-probablePlayerList = Array ();
-var i=0;
-numberList = Array();
-for(j=0;j<5;j++)
-	numberList[j]=0;	
