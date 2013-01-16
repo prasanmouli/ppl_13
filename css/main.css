@@ -4,7 +4,7 @@ body{
 	}
 a, a:visited{
 	font-size: 13px;
-	font-family: Trajan Pro;
+	font-family: Trajan Pro, Segoe UI;
 	text-decoration: none;
 	color: #17526d;
 	font-weight: bold;	
@@ -31,7 +31,7 @@ a:hover{
 	}	
 .menu a{
 	font-size: 16px;
-	font-family: Trajan Pro;
+	font-family: Trajan Pro, Segoe UI;
 	text-decoration: none;
 	color: #974B07;
 	margin-right: 10px;
@@ -235,3 +235,9 @@ form.signin p, form.signin span {
 }
 
 figure img { width: 115px; display: block; }
+
+#selection div {
+    -webkit-transition: all 0.6s ease;
+    -moz-transition:    all 0.6s ease;
+    -o-transition:      all 0.6s ease;
+	}

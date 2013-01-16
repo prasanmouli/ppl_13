@@ -9,7 +9,7 @@
 <title>PPL13</title>
 <link href="./css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
 <script>
 /*Login Modal*/
 $(document).ready(function() {

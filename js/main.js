@@ -35,15 +35,19 @@ function make_visible(get){
 }
 
 function addToList(player_id, name){
-		var tml = "<div id="+player_id+">"+name+"<a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </div>";
+		var tml = "<div id="+player_id+" style='display:none;'>"+name+"<a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </div>";
 		$.ajax({
 			success: function() {
 			$('#selection').append(tml);
+
+			$('#'+player_id).fadeIn('3000', function(){
+				}
+			);
+
 			probablePlayerList[i++] = player_id;
 			
 			if(player_id[0]=='1'){ 
 				//batsmen
-				console.log(player_id[0]);
 				numberList[0]++;
 				console.log(numberList[0]);
 				}
@@ -67,13 +71,15 @@ function addToList(player_id, name){
 				numberList[4]++;
 				console.log(numberList[4]);
 				}
-console.log(probablePlayerList.length);
+			console.log(probablePlayerList.length);
 			if (probablePlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
 				}
 			}
 		});
+		
+		
 		$.ajax({
 			success: function() {
 			$('.'+player_id).empty();
@@ -82,28 +88,6 @@ console.log(probablePlayerList.length);
 		});
 }
 
-function onConfirmation(){
-	var d=0;
-	if(numberList[0]<7)
-	   d=1;
-	else if(numberList[1]<6)
-			d=1;
-		else if(numberList[2]<2)
-				d=1;
-			else if(numberList[3]<2)
-					d=1;
-				else if(numberList[4]<1) 
-					d=1;	
-
-	if(d==1)
-	   alert("osdmfksm!")	
-	   else {
-		   alert("Success");
-		   }		
-		
-								
-}
-			
 function removeFromList(player_id){
 		$.ajax({
 			success: function() {
@@ -144,7 +128,7 @@ function removeFromList(player_id){
 				numberList[4]--;
 				console.log(numberList[4]);
 				}
-			
+			console.log(probablePlayerList.length);
 			if (probablePlayerList.length<18){
 				document.getElementById('confirmation').disabled = true; 
 				}
@@ -158,4 +142,39 @@ function removeFromList(player_id){
 			$('.'+player_id).append("+Add Player+");
 			}
 		});
+}
+
+function onConfirmation(){
+	var d=0;
+	if(numberList[0]<7){
+		console.log("Batsmen<7");
+	    d=1;
+	    }
+	else if(numberList[1]<6){
+			console.log("Bowlers<6");
+			d=1;
+			}
+		else if(numberList[2]<2){
+			console.log("All-rounders<2");
+			d=1;
+			}
+			else if(numberList[3]<1){
+					console.log("Coaches<1");
+					d=1;
+					}
+				else if(numberList[4]<2){ 
+						console.log("Keepers<2");
+						d=1;	
+						}
+	if(d==0){
+		alert("Success");
+		$.ajax({
+			success: function() {
+			$('#pool').empty();
+			$('#pool').append("adasdas");
+			}
+		});
+	}	
+	else
+	    alert("Select a minimum of 7Batsmen, 6Bowlers, 2AllRounders, 2Keepers & 1Coach");
 }
