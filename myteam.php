@@ -12,6 +12,102 @@
 <script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
 var list = Array ('batsmen','bowlers','allrounders','coaches','keepers');
+$.ajax({
+	url: "./pages/checkProbableListConfirmation.php",
+	type: "GET",
+	success: function(data){
+		if(data){
+			$('#pool').empty();		
+			$('#box1').empty();	
+			$('#selection').empty();
+			$('#confirmation').hide();
+			checkConfirmation(data);
+			}
+		else
+			window.onload = playerList(4);
+		}
+});
+function checkConfirmation(pList){
+	$.ajax({
+		  url: "./pages/probablePlayerList.php",
+		  type : 'post' ,
+		  data : {'list' : pList},		
+		  success: function(data) {
+			  $("#pool").append(data);
+		  	}
+		});
+	}
+//console.log("1"+listConfirmed);
+/*
+mystr = <?php
+	$query = "SELECT * from userdetails";
+	$res = mysql_query($query1);
+	while($info = mysql_fetch_array($res1)){
+		if ($info[1]==$_SESSION['username'])
+			$id = $info[0];
+	}
+	$query = "SELECT * from usersPlayerdetails";
+	$res = mysql_query($query1);
+	while($info = mysql_fetch_array($res1)){
+		if ($id = $info[0])	
+			if ($info[1]=="" || $info[1]==NULL)
+				echo " ";
+			else 
+				echo $info[2];
+	}
+?>;
+	if(listConfirmed){
+		$.ajax({
+			success: function() {
+			$('#pool').empty();		
+			$('#box1').empty();	
+			$('#selection').empty();
+			$('#confirmation').hide();
+			}
+		});
+		$.ajax({
+		  url: "./pages/probablePlayerList.php",
+		  type : 'post' ,
+		  data : {'list' : pplProbablePlayerList},		
+		  success: function(data) {
+			  $("#pool").append(data);
+		  	}
+		});
+	}
+	else
+		window.onload = playerList(4);
+	*/	
+/*
+function probableList(probablePlayerList){
+		$.ajax({
+		success: function() {
+			for (k=0; k<probablePlayerList.length; k++){
+			if(Math.floor(probablePlayerList[k][0])=='1'){ 
+				//batsmen				
+				$('#pool').append("<div onmouseover='playerInfo("+probablePlayerList[k]+")'> <img style='float:left;width:115px;margin:0 5px 10px 0;' src='./images/players/batsmen/"+probablePlayerList[k]+".jpeg' /> </div>");
+				}
+			else if(Math.floor(probablePlayerList[k][0])=='4'){
+				//bowlers
+					$('#pool').append("<div> <img style='float:left;width:115px;margin:0 5px 10px 0;' src='./images/players/bowlers/"+probablePlayerList[k]+".jpeg' /> </div>");
+				}
+				else if(Math.floor(probablePlayerList[k][0])=='3'){
+				//allrounders
+					$('#pool').append("<div> <img style='float:left;width:115px;margin:0 5px 10px 0;' src='./images/players/allrounders/"+probablePlayerList[k]+".jpeg' /> </div>");
+				}
+				else if(Math.floor(probablePlayerList[k][0])=='5'){
+				//coaches
+					$('#pool').append("<div> <img style='float:left;width:115px;margin:0 5px 10px 0;' src='./images/players/coaches/"+probablePlayerList[k]+".jpeg' /> </div>");
+				}
+				else {
+				//keepers
+					$('#pool').append("<div> <img style='float:left;width:115px;margin:0 5px 10px 0;' src='./images/players/keepers/"+probablePlayerList[k]+".jpeg' /> </div>");
+				}
+			}
+		} 
+		});
+	}*/
+	
+	
 function playerList(n){
 	if (n==0){
 		k = "pages/" + list[n] + ".php";
@@ -65,7 +161,12 @@ function playerList(n){
 		});
 		}
 }
-window.onload = playerList(4);
+/* if(mystr==" ")
+	window.onload = playerList(4);
+else{
+	var myarr = mystr.split(';');
+	window.onload = probableList(myarr);
+	}	*/
 </script>
 <script type="text/javascript">
 
@@ -136,7 +237,7 @@ window.onload = playerList(4);
     <div id="selection" style="overflow: auto; height: 360px;">
     </div>
     <div align="center"> <button id="confirmation" onclick="onConfirmation()" disabled="true"> Confirm List </button></div>
-    </div>
+     </div>
 
 </div>
 
