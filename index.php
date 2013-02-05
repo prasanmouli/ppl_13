@@ -92,13 +92,23 @@ $(document).ready(function() {
 			else 
 				echo "auto"; 
 		?>"> <a href="./myteam.php"> my TEAM </a> </td>
-	<td style="display:
+	
+    <td style="display:
+		<?php 
+			if($m==1)
+				echo "none";
+			else 
+				echo "auto"; 
+		?>"> <a href=""> Match Day </a> </td>
+        
+    <td style="display:
 		<?php 
 			if($m==1)
 				echo "none";
 			else 
 				echo "auto"; 
 		?>"> <a href=""> my SCORE </a> </td>
+   	
 	<td> <a href=""> The Guide </a> </td>
 	<td> <a href=""> Rules & Regulations </a> </td>
 	<td> <a href=""> Contact Us </a> </td>

@@ -1,5 +1,4 @@
 <?php
-
 /* DEFINITIONS to connect to the database */
 //ip address of the server.
 define("SERVER","localhost");

@@ -1,5 +1,7 @@
 
 var probablePlayerList = new Array ();
+var finalSixteen = new Array ();
+
 var i=0, src;
 var numberList = new Array(5);
 for(j=0;j<5;j++){
@@ -61,20 +63,29 @@ function make_visible(get){
 
 function addToList(player_id, name){
 		var tml = "<div id="+player_id+" style='display:none;'>"+name+"<a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </div>";
+		flag=0;	
 		$.ajax({
 			success: function() {
+			
+		if(probablePlayerList.length!=0){
+			for (m=0; m<probablePlayerList.length; m++)
+		  	  if (probablePlayerList[m]!=player_id){
+				probablePlayerList[i++] = player_id;	
+				flag = 1;	
+				break;
+			}
+		}
+		else {
+			probablePlayerList[i++] = player_id;	
+			flag = 1;
+			}
+			
+		if(flag==1){
 			$('#selection').append(tml);
-
 			$('#'+player_id).fadeIn('3000', function(){
 				}
 			);
-
-			probablePlayerList[i++] = player_id;
-			/*if(localStorage.pplLocalStorage) 
-				localStorage.pplLocalStorage += probablePlayerList[i-1]+';';
-			else
-				localStorage.pplLocalStorage = probablePlayerList[i-1]+';';*/
-				
+			
 			if(player_id[0]=='1'){ 
 				//batsmen
 				numberList[0]++;
@@ -101,19 +112,26 @@ function addToList(player_id, name){
 				console.log(numberList[4]);
 				}
 			console.log(probablePlayerList.length);
+			
 			if (probablePlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
 				}
 			}
-		});		
+		}
+		});
 		
 		$.ajax({
-			success: function() {
-			$('.'+player_id).empty();
-			$('.Added'+player_id).append("+Added+");
-			}
-		});
+				success: function() {
+					$('.'+player_id).empty();
+					$('.Added'+player_id).empty();
+					$('.Added'+player_id).append("+Added+");
+				}
+			});
+			/*if(localStorage.pplLocalStorage) 
+				localStorage.pplLocalStorage += probablePlayerList[i-1]+';';
+			else
+				localStorage.pplLocalStorage = probablePlayerList[i-1]+';';*/
 }
 
 function removeFromList(player_id){
@@ -126,10 +144,9 @@ function removeFromList(player_id){
 					probablePlayerList.splice(k,1);
 					i--;
 					break;
-					}
+					}	
 				//console.log(probablePlayerList[j]);
 			}
-			
 			/*tmp = localStorage.pplLocalStorage.split(";");
 			var tmplocalStorage="";
 			for(k=0;k<tmp.length;k++){
@@ -179,6 +196,7 @@ function removeFromList(player_id){
 		$.ajax({
 			success: function() {
 			$('.Added'+player_id).empty();
+			$('.'+player_id).empty();
 			$('.'+player_id).append("+Add Player+");
 			}
 		});
@@ -217,9 +235,6 @@ function onConfirmation(){
 			url: "./pages/updateProbableList.php",
 			type : 'post' ,
 			data : {'list' : pplProbablePlayerList},
-			success: function(data) {
-					$("#pool").append(data);
-				}
 		});
 		$.ajax({
 			success: function() {

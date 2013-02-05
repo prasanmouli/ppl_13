@@ -1,4 +1,6 @@
 <?php
+	include("redirect.php");
+
 include("config.lib.php");
 session_start();
 $flag = 0;

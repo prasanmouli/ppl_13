@@ -178,6 +178,9 @@ else{
 <div align="right" style="margin-right:0px;">
 <table>
 	<?php 
+		if(!$_SESSION['username']){
+		header("location: ./");
+		}
 		if (isset($_SESSION['username'])){
 		echo "<tr> <td class='user'>";	
 		if (isset($_SESSION['views']))
@@ -201,6 +204,7 @@ else{
 	<tr>
 	<td> <a href="./"> Home </a> </td>
 	<td class="current_page"> <a href=""> my TEAM </a> </td>
+   	<td> <a href=""> Match Day </a> </td>
 	<td> <a href=""> my SCORE </a> </td>
 	<td> <a href=""> The Guide </a> </td>
 	<td> <a href=""> Rules & Regulations </a> </td>
