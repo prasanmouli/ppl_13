@@ -7,29 +7,67 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PPL13</title>
+
 <link href="./css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
+/*document.getElementById("bowler_list").style="display: none; visibility: hidden;" ;
+document.getElementById("allrounder_list").style="display: none; visibility: hidden;";
+document.getElementById("keeper_list").style="display: none; visibility: hidden;" ;
+document.getElementById("coaches_list").style="display: none; visibility: hidden;" ;*/
 var list = Array ('batsmen','bowlers','allrounders','coaches','keepers');
+var contentLoad = 0;
+
 $.ajax({
-	url: "./pages/checkProbableListConfirmation.php",
+	url: "./pages/checkFinalListConfirmation.php",
 	type: "GET",
 	success: function(data){
 		if(data){
 			$('#pool').empty();		
 			$('#box1').empty();	
 			$('#selection').empty();
+			$('#selection').append("You have finalised your team already. Go to <a href='matchDay.php'> Match Day </a>");
 			$('#confirmation').hide();
+			finalListDisplay(data);
+			}
+		else
+			contentLoad = 1;
+	}
+});
+
+
+$.ajax({
+	url: "./pages/checkProbableListConfirmation.php",
+	type: "GET",
+	success: function(data){
+	  if(contentLoad == 1){
+		if(data){
+			$('#pool').empty();		
+			$('#box1').empty();	
+			$('#selection').empty();
 			checkConfirmation(data);
 			}
 		else
 			window.onload = playerList(4);
 		}
+	}
 });
+
+function finalListDisplay(pList){
+	$.ajax({
+		  url: "./pages/finalListInfo.php",
+		  type : 'post' ,
+		  data : {'list' : pList},		
+		  success: function(data) {
+			  $("#pool").append(data);
+		  	}
+		});
+	}
+
 function checkConfirmation(pList){
 	$.ajax({
-		  url: "./pages/probablePlayerList.php",
+		  url: "./pages/playerList.php",
 		  type : 'post' ,
 		  data : {'list' : pList},		
 		  success: function(data) {
@@ -204,7 +242,7 @@ else{
 	<tr>
 	<td> <a href="./"> Home </a> </td>
 	<td class="current_page"> <a href=""> my TEAM </a> </td>
-   	<td> <a href=""> Match Day </a> </td>
+   	<td> <a href="./matchday.php"> Match Day </a> </td>
 	<td> <a href=""> my SCORE </a> </td>
 	<td> <a href=""> The Guide </a> </td>
 	<td> <a href=""> Rules & Regulations </a> </td>
@@ -227,13 +265,13 @@ else{
     <div id="pool" style="width: 630px; float:left; overflow: auto; margin-right:20px; height: 450px;">
     <div id="batsmen_list" align="center">
 	</div>
-	<div id="bowler_list" style="display: none; visibility: hidden;" align="center">
+	<div id="bowler_list" align="center">
 	</div>
-    <div id="allrounder_list" style="display: none; visibility: hidden;" align="center">
+    <div id="allrounder_list"  align="center">
 	</div>
-	<div id="coach_list" style="display: none; visibility: hidden;" align="center">
+	<div id="coach_list"  align="center">
 	</div>
-    <div id="keeper_list" style="display: none; visibility: hidden;" align="center">
+    <div id="keeper_list"  align="center">
 	</div>
 	</div>
     

@@ -1,6 +1,8 @@
 <?php
 	include("config.lib.php");
-
+ 		if(!$_SESSION['username']){
+			header("refresh:0;url=./");
+		}
 		$query = "SELECT * FROM bowlers";
 		$res = mysql_query($query);
 		while($info = mysql_fetch_array($res)){
@@ -12,7 +14,7 @@
 		</figure>
     </div>";
 			$src = "./images/players/bowlers/".$info[0].".jpg";
-			echo $txt1."<img src=".$src." alt=".$info[0]."/>".$txt2;
+			echo $txt1."<img id='img".$info[0]."' src=".$src." alt=".$info[0]."/>".$txt2;
 			}
 
     echo "<section id='learninz'>

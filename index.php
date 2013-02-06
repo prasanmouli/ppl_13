@@ -99,7 +99,7 @@ $(document).ready(function() {
 				echo "none";
 			else 
 				echo "auto"; 
-		?>"> <a href=""> Match Day </a> </td>
+		?>"> <a href="./matchday.php"> Match Day </a> </td>
         
     <td style="display:
 		<?php 
