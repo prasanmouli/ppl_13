@@ -8,7 +8,7 @@ var i=0, src;
 var numberList = new Array(5);
 for(j=0;j<5;j++){
 	numberList[j]=0;
-console.log(numberList[j]);
+	console.log(numberList[j]);
 }
 
 var finalNumberList = new Array(5);
@@ -48,7 +48,7 @@ function hide(get) {
 	}
 	var divID = document.getElementById(get);
 	divID.style.display     = "none";
-	divID.style.visibility  = "hidden";         
+	divID.style.visibility  = "hidden";    
 }	
 
 		
@@ -70,21 +70,27 @@ function make_visible(get){
 }
 
 function addToList(player_id, name){
-		var tml = "<div id="+player_id+" style='display:none;'>"+name+"<a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </div>";
+		var tml = "<tr id='tr"+player_id+"'> <td id="+player_id+" class='box2_player' style='display:none;'>"+name+"</td> <td> <a href='javascript:void' onclick=''> <img src='./images/close_popup.png' onclick='removeFromList("+player_id+")' width='10px' style='margin-left:10px' title='Remove'/> </a> </td> <br/> </tr>";
 		flag=0;	
 $.ajax({
 	url: "./pages/checkProbableListConfirmation.php",
 	type: "GET",
 	success: function(data){
-		$('#img'+player_id).css({opacity: 0.2});
+
+	
+	
 	if(!data){
+		
 		if(probablePlayerList.length!=0){
 			for (m=0; m<probablePlayerList.length; m++)
-		  	  if (probablePlayerList[m]!=player_id){
-				probablePlayerList[i++] = player_id;	
-				flag = 1;	
-				break;
-			}
+		  	  if (probablePlayerList[m]==player_id){
+				flag = 2;
+				break;	
+				}
+			if(flag!=2){
+				flag = 1;
+				probablePlayerList[i++] = player_id;			
+				}	
 		}
 		else {
 			probablePlayerList[i++] = player_id;	
@@ -92,10 +98,9 @@ $.ajax({
 			}
 			
 		if(flag==1){
+			$('#img'+player_id).css({opacity: 0.2});
 			$('#selection').append(tml);
-			$('#'+player_id).fadeIn('3000', function(){
-				}
-			);
+			$('#'+player_id).fadeIn('3000', function(){});
 			
 			if(player_id[0]=='1'){ 
 				//batsmen
@@ -127,6 +132,7 @@ $.ajax({
 			if (probablePlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
+				document.getElementById('confirmation').style.opacity = "1";
 				}
 			}
 		}
@@ -135,11 +141,14 @@ $.ajax({
 	else {
 		if(finalPlayerList.length!=0){
 			for (m=0; m<finalPlayerList.length; m++)
-		  	  if (finalPlayerList[m]!=player_id){
-				finalPlayerList[i++] = player_id;	
-				flag = 1;	
+		  	  if (finalPlayerList[m]==player_id){
+				flag = 2;
 				break;
-			}
+				}
+			if(flag!=2){
+				finalPlayerList[i++] = player_id;	
+				flag = 1;
+				}
 		}
 		else {
 			finalPlayerList[i++] = player_id;	
@@ -147,11 +156,11 @@ $.ajax({
 			}
 			
 		if(flag==1){
+				
+			$('#img'+player_id).css({opacity: 0.2});
 			$('#selection').append(tml);
-			$('#'+player_id).fadeIn('3000', function(){
-				}
-			);
-			
+			$('#'+player_id).fadeIn('3000', function(){});
+		
 			if(player_id[0]=='1'){ 
 				//batsmen
 				finalNumberList[0]++;
@@ -182,6 +191,7 @@ $.ajax({
 			if (finalPlayerList.length>17){
 				console.log("Paoskdlamskldnskldf ,adkjfns");
 				document.getElementById('confirmation').disabled = false; 
+				document.getElementById('confirmation').style.opacity = "1";
 				}
 			}
 		
@@ -207,7 +217,8 @@ $.ajax({
 	url: "./pages/checkProbableListConfirmation.php",
 	type: "GET",
 	success: function(data){
-		$('#'+player_id).remove();
+		//$('#tr'+player_id).fadeOut('3000', function(){});
+		$('#tr'+player_id).remove();
 		$('#img'+player_id).css({opacity: 1});
 	if(!data){
 			for(k=0; k<probablePlayerList.length; k++){
@@ -259,6 +270,7 @@ $.ajax({
 			console.log(probablePlayerList.length);
 			if (probablePlayerList.length<18){
 				document.getElementById('confirmation').disabled = true; 
+				document.getElementById('confirmation').style.opacity = "0.5";
 				}
 			
 			}
@@ -302,6 +314,7 @@ $.ajax({
 			console.log(finalPlayerList.length);
 			if (finalPlayerList.length<18){
 				document.getElementById('confirmation').disabled = true; 
+				document.getElementById('confirmation').style.opacity = "0.5";
 				}
 			
 			}
@@ -317,11 +330,27 @@ $.ajax({
 		});
 }
 
+function onPreConfirmation(){
+	$.ajax({
+		success: function(){
+		$("#message").empty();	
+		$("#message").append("Are you sure you want to confirm? <button onclick='onConfirmation()'>Y</button> <button onclick='onDenial()'>N</button>");
+		}
+	});
+	}
 
+function onDenial(){
+	$.ajax({
+		success: function(){
+		$("#message").empty();
+		}
+	});	
+	}
 
 function onConfirmation(){
 	var d=0;
 	console.log(pplProbablePlayerList+"asdfasd");
+	
 	
 $.ajax({
 	url: "./pages/checkProbableListConfirmation.php",
@@ -349,9 +378,20 @@ if(!data){
 						console.log("Keepers<2");
 						d=1;	
 						}
+	
+	/*$.ajax({
+		url: "./pages/checkDuplicate.php",
+		type : 'post' ,
+		data : {'list' : probablePlayerList},
+		success: function(data){
+		  if(data)
+		  	d=1;
+		}
+		});				
+	*/
+	
 	if(d==0){
-		alert("Success");
-		
+		//alert("Success");
 		for (k=0; k<probablePlayerList.length; k++)
 			pplProbablePlayerList += probablePlayerList[k] + ";";	
 		$.ajax({
@@ -379,8 +419,10 @@ if(!data){
 		});*/
 		
 	}	
-	else
-	    alert("Select a minimum of 7Batsmen, 6Bowlers, 2AllRounders, 2Keepers & 1Coach");
+	else{
+		$("#message").empty();
+		$("#message").append("<span style='color: red; font-size: 12px;'>Select a minimum of 7 Batsmen, 6 Bowlers, 2 AllRounders, 2 Keepers & 1 Coach.</span>");
+	}
 }
 
 else{
@@ -409,9 +451,19 @@ else{
 							console.log("TotalNum>18");
 							d=1;
 							}
+	/*for (q=0; q<finalPlayerList.length-1; q++){
+		for (w=q; q<finalPlayerList.length; w++){
+			if(finalPlayerList[q]==finalPlayerList[w]){
+				d=1;
+				finalPlayerList.splice(w,1);
+			}
+		}
+	}		*/	
+			
 	if(d==0){
-		alert("Success");
+		//alert("Success");
 		
+				
 		for (k=0; k<finalPlayerList.length; k++)
 			pplFinalPlayerList += finalPlayerList[k] + ";";	
 			
@@ -444,9 +496,10 @@ else{
 		});*/
 		
 	}	
-	else
-	    alert("Select a minimum of 7Batsmen, 6Bowlers, 2AllRounders, 2Keepers & 1Coach and a total of only eighteen players");
-		
+	else{
+	    $("#message").empty();
+		$("#message").append("<span style='color: red; font-size: 12px;'>Select exactly 7 Batsmen, 6 Bowlers, 2 AllRounders, 2 Keepers & 1 Coach and a total of only 18 players.</span>");
+		}
 	}
 
 }

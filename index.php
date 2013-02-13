@@ -91,7 +91,7 @@ $(document).ready(function() {
 				echo "none";
 			else 
 				echo "auto"; 
-		?>"> <a href="./myteam.php"> my TEAM </a> </td>
+		?>"> <a href="./myteam.php"> My Team </a> </td>
 	
     <td style="display:
 		<?php 
@@ -107,7 +107,7 @@ $(document).ready(function() {
 				echo "none";
 			else 
 				echo "auto"; 
-		?>"> <a href=""> my SCORE </a> </td>
+		?>"> <a href=""> My Score </a> </td>
    	
 	<td> <a href=""> The Guide </a> </td>
 	<td> <a href=""> Rules & Regulations </a> </td>
@@ -118,8 +118,8 @@ $(document).ready(function() {
 	<div id="content">
 	<table> 
     <tr> <td id="money"> Prize Money <br/> <img src="./images/prize.jpg" width="200px" /> ₹15,000 </td>
-    <td> <p> Ever thought of having Sachin and Gilchrist opening the batting for your team?  Warne and Murali bowling together?  Think you have it in you to be the ultimate strategist? Do you spend your time second guessing coaches and captains? Do you possess the wits  the management skills, and the cricketing knowledge required to emerge victorious in a battle of brains?  If your answer to any of those questions is an affirmative, then Pragyan XII awaits you. 
-Come February, and participate in an event bound to capture the imagination of the Cricket fan. Pragyan Premier League offers you a chance to exhibit your knowledge and skills and of course, you get rewarded amply for these!! The Pragyan Premier League(PPL) is a virtual cricket-based management game that tests the strategy skills of the contestants. Build your team and Game On!</p> </td> </tr> 
+    <td> <p> Ever thought of having Sachin and Gilchrist opening the batting for your team?  Warne and Murali bowling together?  Think you have it in you to be the ultimate strategist? Do you spend your time second guessing coaches and captains? Do you possess the wits  the management skills, and the cricketing knowledge required to emerge victorious in a battle of brains?  If your answer to any of those questions is an affirmative, then Pragyan XIII awaits you. 
+Come March, and participate in an event bound to capture the imagination of the Cricket fan. Pragyan Premier League offers you a chance to exhibit your knowledge and skills and of course, you get rewarded amply for these!! The Pragyan Premier League(PPL) is a virtual cricket-based management game that tests the strategy skills of the contestants. Build your team and Game On!</p> </td> </tr> 
 	</table> 
 	<table align="center"> <tr style="display:
 		<?php 

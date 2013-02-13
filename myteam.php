@@ -27,10 +27,10 @@ $.ajax({
 			$('#pool').empty();		
 			$('#box1').empty();	
 			$('#selection').empty();
-			$('#selection').append("You have finalised your team already. Go to <a href='matchDay.php'> Match Day </a>");
+			$('#selection').append("<div style='margin-top: 50px'> This is your squad.<br/> Go to <a href='matchDay.php'> Match Day </a> to pick your final eleven or send players for training. </div>");
 			$('#confirmation').hide();
 			finalListDisplay(data);
-			}
+		}
 		else
 			contentLoad = 1;
 	}
@@ -48,8 +48,14 @@ $.ajax({
 			$('#selection').empty();
 			checkConfirmation(data);
 			}
-		else
+		else{
+			$.ajax({
+				success: function(){
+ 				  $('#stage').append("Make a list of probables for your squad!");
+				}
+			});
 			window.onload = playerList(4);
+			}
 		}
 	}
 });
@@ -61,6 +67,7 @@ function finalListDisplay(pList){
 		  data : {'list' : pList},		
 		  success: function(data) {
 			  $("#pool").append(data);
+			  $('#stage').append("<strong> SQUAD </strong>");
 		  	}
 		});
 	}
@@ -72,6 +79,7 @@ function checkConfirmation(pList){
 		  data : {'list' : pList},		
 		  success: function(data) {
 			  $("#pool").append(data);
+  			  $('#stage').append("Choose players for your squad!");
 		  	}
 		});
 	}
@@ -206,10 +214,6 @@ else{
 	window.onload = probableList(myarr);
 	}	*/
 </script>
-<script type="text/javascript">
-
-</script>
-<style></style>
 </head>
 
 <body>
@@ -237,13 +241,14 @@ else{
 	<div id="header">
 	<img src="./images/ppl13_header2c.png" width="1100px" height="120px"/>
 	</div>
+
 	<div class="menu">
 	<table>
 	<tr>
 	<td> <a href="./"> Home </a> </td>
-	<td class="current_page"> <a href=""> my TEAM </a> </td>
+	<td class="current_page"> <a href=""> My Team </a> </td>
    	<td> <a href="./matchday.php"> Match Day </a> </td>
-	<td> <a href=""> my SCORE </a> </td>
+	<td> <a href=""> My Score </a> </td>
 	<td> <a href=""> The Guide </a> </td>
 	<td> <a href=""> Rules & Regulations </a> </td>
 	<td> <a href=""> Contact Us </a> </td>
@@ -251,8 +256,8 @@ else{
 	</table>
 	</div>
 
-	<div id="content" style="height: 450px;">
-	<div id="box1"  style="width: 160px; height:450px;float: left">
+	<div id="content" style="height: 600px;">
+	<div id="box1"  style="width: 180px; height: 600px; margin-left:20px; float: left;">
 		<table class="team_select" style="padding: 80px 20px 50px 0px;">
 		<tr> <td> <button onclick="make_visible('batsmen_list')"> Batsmen </button> </td> </tr>
 		<tr> <td> <button onclick="make_visible('bowler_list')"> Bowlers </button> </td> </tr>
@@ -262,7 +267,10 @@ else{
 		</table>
 	</div>
     
-    <div id="pool" style="width: 630px; float:left; overflow: auto; margin-right:20px; height: 450px;">
+    <div>
+    <div id="stage" style="width: 605px; float:left;">
+    </div>
+    <div id="pool" style="width: 630px; float:left; overflow: auto; height:560px; margin-right:20px;">
     <div id="batsmen_list" align="center">
 	</div>
 	<div id="bowler_list" align="center">
@@ -274,12 +282,16 @@ else{
     <div id="keeper_list"  align="center">
 	</div>
 	</div>
-    
-    <div style="width: 180px; overflow: auto; height: 400px;">
-    <div id="selection" style="overflow: auto; height: 360px;">
     </div>
-    <div align="center"> <button id="confirmation" onclick="onConfirmation()" disabled="true"> Confirm List </button></div>
-     </div>
+    
+    <div style="width: 200px; overflow: auto;">
+    <div style="overflow: auto; margin-top: 40px; height: 430px;">
+    <table id="selection"> </table>
+    </div>
+    <div align="center" style="margin-top:10px;"> <button id="confirmation" onclick="onPreConfirmation()" disabled="true"> CONFIRM </button></div>
+    <div id="message" style="text-align:center;"> </div>
+    </div>
+    </div>
 
 </div>
 
