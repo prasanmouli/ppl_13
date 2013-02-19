@@ -1,10 +1,31 @@
+@font-face {
+    font-family: "TrajanPro";
+    src: local('Trajan Pro'), url('./fonts/TrajanPro.otf') format('opentype');
+	font-weight: lighter;
+}
+
+@font-face {
+    font-family: "Exo";
+    src: local('Exo'), url('./fonts/Exo.otf') format('opentype');
+}
+
+@font-face {
+	font-family: "burnstown_dam";
+    src: local('burnstown_dam'), url('./fonts/burnstown_dam.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Furore";
+    src: local('Furore'), url('./fonts/Furore.otf') format('opentype');
+}
+
 body{
 	background: #bfc292;
 	border-radius:10px;
 	}
 a, a:visited{
 	font-size: 13px;
-	font-family: Trajan Pro, Trebuchet MS, Segoe UI;
+	font-family: "TrajanPro", Trebuchet MS, Segoe UI;
 	text-decoration: none;
 	color: #17526d;
 	font-weight: bold;	
@@ -17,8 +38,8 @@ a:hover{
 	border-color: #974B07;
 	} 
 .user{
-	font-size: 12px;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 14px;
+	font-family: "Exo", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	}
 .user a{
 	border: none;
@@ -31,7 +52,7 @@ a:hover{
 	}	
 .menu a{
 	font-size: 16px;
-	font-family: Trajan Pro, Trebuchet MS, Segoe UI;
+	font-family: "TrajanPro", Trebuchet MS, Segoe UI;
 	text-decoration: none;
 	color: #974B07;
 	margin-right: 10px;
@@ -55,6 +76,8 @@ a:hover{
 	box-shadow: inset 0 0 6px 0 black;
 	}		
 #header img{
+	width: 1200px;
+	height: 120px;
 	border:1px solid black; 
 	border-radius:7px;
 	-webkit-box-shadow: 0 8px 8px -6px black;
@@ -62,8 +85,8 @@ a:hover{
 	box-shadow: 0 8px 8px -6px black;
 	}
 #content{
-	width:1050px;
-	height: 350px;
+	width:1200px;
+	height: 670px;
 	text-align: left;
 	font-family: Segoe UI, Tahoma;
 	font-size: 16px;
@@ -76,6 +99,7 @@ a:hover{
 	padding:30px;
 	}	
 #stage{
+	font-family: "Exo";
 	color: #004000;
 	text-align: center;
 	border: 1px solid black;
@@ -132,12 +156,18 @@ a:hover{
 	opacity: 0.8;
 	z-index: 999;
 }
+	
+.login-window {
+cursor:pointer; 
+}
+
 .login-popup{
 	display: none;
-	background: rgb(169,175,137);
+	background: #bfc292;
 	padding: 10px; 	
 	border: 2px solid black;
 	float: left;
+	width: 400px;
 	font-size: 1.2em;
 	position: fixed;
 	top: 50%; left: 50%;
@@ -149,13 +179,14 @@ a:hover{
         -moz-border-radius: 3px; /* Firefox */
         -webkit-border-radius: 3px; /* Safari, Chrome */
 }
+
 .login-popup a {
 	border:none;
 	}
 /*Close button*/
 img.btn_close { 
 	float: right;
-	width: 18px; 
+	width: 12px; 
 	margin: 0;
 	border: none;
 }
@@ -171,7 +202,7 @@ form.signin .textbox span {
 }
 form.signin p, form.signin span { 
 	font-size: 14px;
-	font-family: Trajan Pro, Trebuchet MS;
+	font-family: "TrajanPro", Trebuchet MS;
 	text-decoration: none;
 	font-weight: bold;
 	color: #17526d; 
@@ -231,9 +262,11 @@ form.signin p, form.signin span {
 	}
 
 .team_select button{
+	font-family: "TrajanPro";
 	width: 120px;
 	height: 50px;
 	color: #004000;
+	font-size: 12px;
 	font-weight: bold;
 	border-radius: 5px;
 	background: #bfc292;
@@ -258,8 +291,10 @@ form.signin p, form.signin span {
 	border-radius: 4px;
 	}	
 #confirmation, #finalElevenConfirmation, #finalTrainingConfirmation {
+	font-family: "TrajanPro";
 	width: 70px;
 	height: 18px;
+	margin-top: 5px;
 	font-size: 10px;
 	color: #004000;
 	font-weight: bold;
@@ -279,15 +314,18 @@ form.signin p, form.signin span {
 	color: #974B07;
 	border: 1px solid #974B07;
 	}	
-	
 
-.box2_player{
-	color: #004000;
-	align: center;
-	background: #bfc292;
-	border-radius: 5px;
-	padding: 0 5px 0 5px;
+
+#message{	
+	font-family: "Exo";
+	font-size: 14px;
+}	
+
+#message2, #balance{
+	font-family: "Exo";
+	font-size: 17px;
 }
+
 
 #message button{
 	width: 15px;
@@ -306,16 +344,65 @@ form.signin p, form.signin span {
 	cursor: pointer;
 }
 
+#poolDay{
+    font-family: "Exo";
+}
+
+#poolDay h1{
+	font-family: "burnstown_dam";
+	font-size: 28px;
+	cursor: pointer;
+}
+
+#poolDay h1:hover{
+	color: #974B07;
+}
+
+#A:hover + #finalSquad{
+	border: 1px solid #974B07;
+}
+
+#B:hover + #finalTeam {
+	border: 2px solid #974B07;
+	-webkit-box-shadow: 0 6px 6px -6px black;
+	-moz-box-shadow: 0 6px 6px -6px black;
+	box-shadow: 0 6px 6px -6px black;
+}
+
+#finalSquad{
+	background: #bfc292;
+	border: 1px solid #17526d;
+	border-radius: 5px;	
+	margin-top: 20px;
+	color: black;
+	-moz-box-shadow:    0 0 1px 1px black;
+  	-webkit-box-shadow: 0 0 1px 1px black;
+  	box-shadow:         0 0 1px 1px black;
+}
+
+#finalSquad td{
+	padding: 3px;	
+}
+
+#finalTeam{
+	border: 2px solid #17526d;
+	color: black;
+	margin-top: 20px;
+	border-color: rgb(23,82,109);
+	border-radius: 5px;
+
+}
+
 #finalSquad a, #finalSquad a:visited{
 	color: #974B07;
 	}
 
-#finalElevenMessage{
+#finalElevenMessage, #trainingMessage{
 	color: #974B07;
 	font-size: 12px;
+	font-family: Segoe UI;
 	font-weight: bold;
-	}
-
+}
 
 #page-wrap { position: relative; }
 
@@ -330,4 +417,59 @@ figure img { width: 115px; display: block; }
     -webkit-transition: all 0.6s ease;
     -moz-transition:    all 0.6s ease;
     -o-transition:      all 0.6s ease;
-	}
+}
+
+.box2_player{
+	font-family: "Exo";
+	height: 20px;
+	color: #004000;
+	align: center;
+	background: #bfc292;
+	border-radius: 3px;
+	padding: 2px;
+}
+
+	
+#page-wrap .login-window{
+	color: white;
+	font-family: Helvetica, "TrajanPro";
+	font-size: 12px;
+	font-weight: normal;
+}
+
+#page-wrap .login-window:hover{
+	text-decoration: underline;
+}
+
+
+.playerInfo td {
+	padding: 5 0 5 0;
+}
+
+.playerInfo img {
+	padding: 2px;
+	margin: 0 20px;
+	border-radius: 5px;
+	border: 1px solid black;
+	-webkit-box-shadow: 0 6px 6px -6px black;
+	-moz-box-shadow: 0 6px 6px -6px black;
+	box-shadow: 0 6px 6px -6px black;
+}
+
+.playerInfo .categ{
+	font-family: Trebuchet MS;
+	color: #17526d;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.playerInfo .categ_value{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 13px;
+	color: black;	
+}
+
+#currentSelection{
+	font-size: 13px;
+	color: #17526d;
+}

@@ -6,8 +6,9 @@
 		while($info = mysql_fetch_array($res)){
 			$txt1 = "<div id='page-wrap'>
 		<figure class='cap-left'>";
-			$txt3 = "addToList('$info[0]','$info[1]')";
-			$txt2 = "<figcaption align='center'>".$info[1]."<br/> <a class=".$info[0]." onclick=".$txt3." href='javascript:void' style='font-size:9px'> +Add Player+ </a><span class='Added".$info[0]."' style='font-size:9px;color:#6CCF4B;font-family:Trajan Pro;' > </span>
+			$txt3 = "addToList(".$info[0].",'$info[1]')";
+			$txt2 = "<figcaption align='center'>"."<a class = 'login-window' src='javascript:void' onclick='playerInfo(".$info[0].")'>".$info[1]."</a>"
+."<br/> <a class=".$info[0]." onclick=".$txt3." href='javascript:void' style='font-size:9px'> +Add Player+ </a><span class='Added".$info[0]."' style='font-size:9px;color:#6CCF4B;font-family:TrajanPro;' > </span>
 			</figcaption>
 		</figure>
     </div>";
@@ -23,14 +24,14 @@ figure {
   position: relative; 
   float: left; 
   overflow: hidden; 
-  margin: 0 5px 10px 0;
+  margin: 0 8px 10px 0;
 }
 figcaption { 
   position: absolute; 
   background: rgba(0,0,0,0.9); 
   width: 115px;
   height: 28px;
-  font-size: 12px;
+  font-size: 10px;
   color: white; 
   opacity: 0;
   -webkit-transition: all 0.6s ease;

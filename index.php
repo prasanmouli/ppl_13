@@ -5,11 +5,12 @@
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="icon" href="./images/ppl13.png" type="image/png">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PPL13</title>
 <link href="./css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
 <script>
 /*Login Modal*/
 $(document).ready(function() {
@@ -110,12 +111,12 @@ $(document).ready(function() {
 		?>"> <a href=""> My Score </a> </td>
    	
 	<td> <a href=""> The Guide </a> </td>
-	<td> <a href=""> Rules & Regulations </a> </td>
-	<td> <a href=""> Contact Us </a> </td>
+	<td> <a href="http://www.pragyan.org/13/home/events/manigma/pragyan_premier_league/" target="_blank"> Rules & Regulations </a> </td>
+	<td> <a href="http://www.pragyan.org/13/home/events/manigma/pragyan_premier_league/" target="_blank"> Contact Us </a> </td>
 	</tr>
 	</table>
 	</div>
-	<div id="content">
+	<div id="content" style="height:350px">
 	<table> 
     <tr> <td id="money"> Prize Money <br/> <img src="./images/prize.jpg" width="200px" /> ₹15,000 </td>
     <td> <p> Ever thought of having Sachin and Gilchrist opening the batting for your team?  Warne and Murali bowling together?  Think you have it in you to be the ultimate strategist? Do you spend your time second guessing coaches and captains? Do you possess the wits  the management skills, and the cricketing knowledge required to emerge victorious in a battle of brains?  If your answer to any of those questions is an affirmative, then Pragyan XIII awaits you. 
@@ -134,7 +135,7 @@ Come March, and participate in an event bound to capture the imagination of the 
 
 <div id="login-box" class="login-popup">
     <a href="#" class="close"> <img src="./images/close_popup.png" class="btn_close" title="Close Window" alt="Close" /> </a>
-          <form method="POST" action="./pages/login.php" class="signin">
+          <form align="center" method="POST" action="./pages/login.php" class="signin">
                 <fieldset class="textbox">
                 <label class="title"> Login @ Pragyan</label>
             	<label class="email">
@@ -154,7 +155,7 @@ Come March, and participate in an event bound to capture the imagination of the 
 </div>
 
 <div align="center">
-Pragyan CSG Team 2012-2013
+&copy; Pragyan CSG Team 2012-2013. Best in <img width="18px" style="vertical-align:middle" src="./images/chrome.jpg" alt="Chrome" />
 </div>
 
 </body>

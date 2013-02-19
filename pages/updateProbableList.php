@@ -1,6 +1,6 @@
 <?php
 	include("config.lib.php");
-		$id_List = $_POST['list'];/*
+		$id_List = mysql_real_escape_string($_POST['list']);/*
 		echo "<script type=\"text/javascript\"> console.log(".$id_List.") </script>";*/
 		$query1 = "SELECT * from userdetails";
 		$res1 = mysql_query($query1);

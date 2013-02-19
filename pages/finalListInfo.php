@@ -1,7 +1,7 @@
 <?php
 	include("config.lib.php");
 		
-		$list = $_POST['list'];		
+		$list = mysql_real_escape_string($_POST['list']);		
 		$playerList = explode(";", $list);
 						
 		$data = "";
@@ -19,7 +19,7 @@
 		
 		if (strval($info[0])==$playerList[$k]){
 			$txt1 = "<div id='page-wrap'><figure class='cap-left'>";
-			$txt2 = "<figcaption align='center'>".$info[1]."</figcaption></figure></div>";
+			$txt2 = "<figcaption align='center'><span onclick='playerInformation(".$info[0].")'>".$info[1]." </span> </figcaption></figure></div>";
 			$src = "./images/players/".$category[$m]."/".$info[0].".jpeg";
 			echo $txt1."<img id='img".$info[0]."' src=".$src." alt=".$info[0]."/>".$txt2;
 			}

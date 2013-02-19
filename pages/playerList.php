@@ -1,7 +1,7 @@
 <?php
 	include("config.lib.php");
 		
-		$list = $_POST['list'];
+		$list = mysql_real_escape_string($_POST['list']);
 		
 		$playerList = explode(";", $list);
 						
@@ -44,8 +44,8 @@
 		if (strval($info[0])==$playerList[$k]){
 			$txt1 = "<div id='page-wrap'>
 		<figure class='cap-left'>";
-			$txt3 = "addToList('$info[0]','$info[1]')";
-			$txt2 = "<figcaption align='center'>".$info[1]."<br/> <a class=".$info[0]." onclick=".$txt3." href='javascript:void' style='font-size:9px'> +Add Player+ </a><span class='Added".$info[0]."' style='font-size:9px;color:#6CCF4B;font-family:Trajan Pro;' > </span>
+			$txt3 = "addToList(".$info[0].",'$info[1]')";
+			$txt2 = "<figcaption align='center'>".$info[1]."<br/> <a class=".$info[0]." onclick=".$txt3." href='javascript:void' style='font-size:9px'> +Add Player+ </a><span class='Added".$info[0]."' style='font-size:9px;color:#6CCF4B;font-family:TrajanPro;' > </span>
 			</figcaption>
 		</figure>
     </div>";

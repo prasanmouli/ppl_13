@@ -1,6 +1,6 @@
 <?php
 	include("config.lib.php");	
-	$id = $_GET['id'];		
+	$id = mysql_real_escape_string($_GET['id']);		
 	$category = array('batsmen','keepers','allrounders','bowlers','coaches');
 	$i = array('1','2','3','4','5');
 	for($m=0; $m < count($i); $m++){

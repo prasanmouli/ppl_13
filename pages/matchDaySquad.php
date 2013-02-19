@@ -1,7 +1,7 @@
 <?php
 	include("config.lib.php");
 		
-		$id_List = $_POST['list'];
+		$id_List = mysql_real_escape_string($_POST['list']);
 		$playerList = explode(";",$id_List);				
 		$data = "";
 					

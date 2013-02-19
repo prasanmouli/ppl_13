@@ -35,7 +35,7 @@ if(!($id_List==""||$id_List=NULL)){
 		
 		while($info = mysql_fetch_array($res)){			
 			if (strval($info[0])==$playerList[$k]){
-					$sml .= "<tr id='tr".$info[0]."'> <td id=".$info[0]." class='box2_player'>".$info[1]."</td> <td> <a href='javascript:void' onclick='removeFromTraining(".$info[0].")'> <img src='./images/close_popup.png' width='10px' style='margin-left:10px' title='Remove'/> </a> </td> </tr>";
+					$sml .= "<div class='sortable'> <div class='ui-state-default'> <tr id='tr".$info[0]."'> <td id=".$info[0]." class='box2_player'>".$info[1]."</td> <td> <a href='javascript:void' onclick='removeFromTraining(".$info[0].")'> <img src='./images/close_popup.png' width='10px' style='margin-left:10px' title='Remove'/> </a> </td> </tr> </div> </div>";
 				}
 			
 		}//while loop
@@ -44,5 +44,11 @@ if(!($id_List==""||$id_List=NULL)){
 	  }//inner for loop
 	}//outer for loop
 echo $sml;
+echo "<script>
+  $(function() {
+    $( '.sortable' ).sortable();
+    $( '.sortable' ).disableSelection();
+  });
+</script>";
 }
 ?>
